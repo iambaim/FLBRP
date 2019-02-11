@@ -18,7 +18,7 @@ $(SHLIB): sublibs $(OBJECTS)
 
 sublibs: subclean
 	@for d in $(SUBDIRS); do \
-	  (cd $${d} && CXX="$(CXX11) $(CXX11STD)" CXXFLAGS="$(CXX11FLAGS) $(CXX11PICFLAGS)" MkInclude="$(MkInclude)" $(MAKE) library) || exit 1; \
+	  (cd $${d} && CC=$(CC) CFLAGS="$(CFLAGS)" CXX="$(CXX11) $(CXX11STD)" CXXFLAGS="$(CXX11FLAGS) $(CXX11PICFLAGS)" MkInclude="$(MkInclude)" $(MAKE) library) || exit 1; \
 	done
 
 clean: subclean
